@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra & Stone | Premium Rough Gemstones</title>
+    <meta name="description"
+        content="Discover the raw beauty of nature with our collection of premium rough gemstones. Ethically sourced rubies, sapphires, and emeralds.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#D4AF37',
+                            500: '#C5A028',
+                            600: '#B08D1E',
+                        },
+                        stone: {
+                            800: '#1C1917',
+                            900: '#0C0A09',
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "url('./hero_background.svg')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Styles for Gloss / Glassmorphism */
+        .glass-panel {
+            background: rgba(28, 25, 23, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gem-card:hover .gem-image {
+            transform: scale(1.05);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Loading animation for images */
+        .image-placeholder {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .5;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-stone-900 text-gray-200 antialiased font-sans">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#" class="font-serif text-2xl text-gold-400 tracking-wider font-bold">TERRA & STONE</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home"
+                            class="hover:text-gold-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#collection"
+                            class="hover:text-gold-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Collection</a>
+                        <a href="#about"
+                            class="hover:text-gold-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Our
+                            Story</a>
+                        <a href="register.html"
+                            class="hover:text-gold-400 px-3 py-2 rounded-md text-sm font-medium transition-colors border border-gold-400/30 hover:bg-gold-400/10">Register</a>
+                        <a href="#contact"
+                            class="bg-gold-500 hover:bg-gold-600 text-stone-900 px-5 py-2 rounded-md text-sm font-bold transition-transform transform hover:scale-105">Contact
+                            Us</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+                        aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-btn">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-stone-900 border-b border-gray-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home"
+                    class="text-gray-300 hover:text-gold-400 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#collection"
+                    class="text-gray-300 hover:text-gold-400 block px-3 py-2 rounded-md text-base font-medium">Collection</a>
+                <a href="#about"
+                    class="text-gray-300 hover:text-gold-400 block px-3 py-2 rounded-md text-base font-medium">Our
+                    Story</a>
+                <a href="register.html"
+                    class="text-gold-400 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Register</a>
+                <a href="#contact"
+                    class="text-gray-300 hover:text-gold-400 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="./hero_background.svg" alt="Rough Gemstones Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-stone-900/80 via-stone-900/60 to-stone-900"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" id="hero-content">
+            <h2 class="text-gold-400 font-serif text-lg md:text-xl tracking-[0.3em] mb-4 uppercase animate-fade-in-up">
+                Ethically Sourced</h2>
+            <h1
+                class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight text-glow animate-fade-in-up delay-100">
+                Raw Beauty, <br><span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-200">Untouched by
+                    Time</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-300 font-light mb-10 animate-fade-in-up delay-200">
+                Discover the primal elegance of rough gemstones. From the depths of the earth, directly to your hands.
+            </p>
+            <div class="flex justify-center gap-6 animate-fade-in-up delay-300">
+                <a href="#collection"
+                    class="px-8 py-3 border border-gold-400 text-gold-400 font-serif uppercase tracking-widest hover:bg-gold-400 hover:text-stone-900 transition-all duration-300">
+                    View Collection
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collection -->
+    <section id="collection" class="py-24 bg-stone-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-4">Curated Rough Specimens</h2>
+                <div class="w-24 h-1 bg-gold-500 mx-auto rounded-full"></div>
+                <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Each stone is unique, carrying the geological signature
+                    of its origin.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                <!-- Product 1: Ruby -->
+                <div
+                    class="group gem-card relative bg-stone-800 rounded-lg overflow-hidden shadow-2xl border border-stone-700 transition-all duration-300 hover:border-gold-500/50 hover:shadow-gold-500/10">
+                    <div class="relative h-80 overflow-hidden bg-stone-950">
+                        <img src="./ruby.svg" alt="Rough Ruby Crystal"
+                            class="gem-image w-full h-full object-cover transition-transform duration-700 ease-out">
+                        <div
+                            class="absolute top-4 right-4 bg-stone-900/80 backdrop-blur-sm px-3 py-1 text-gold-400 font-serif text-sm border border-gold-400/30 rounded-full">
+                            Burma • 5.2ct
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-serif text-white mb-2">Imperial Rough Ruby</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">An exceptional specimen displaying the
+                            classic pigeon blood red hue. Perfect hexagonal crystallization ideal for collectors.</p>
+                        <div class="flex justify-between items-center mt-6">
+                            <span class="text-xl font-bold text-gold-400">$2,450</span>
+                            <button
+                                class="bg-transparent border border-gray-600 text-gray-300 px-4 py-2 hover:border-gold-400 hover:text-gold-400 transition-colors uppercase text-xs tracking-wider">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Sapphire -->
+                <div
+                    class="group gem-card relative bg-stone-800 rounded-lg overflow-hidden shadow-2xl border border-stone-700 transition-all duration-300 hover:border-blue-500/50 hover:shadow-blue-500/10">
+                    <div class="relative h-80 overflow-hidden bg-stone-950">
+                        <img src="./sapphire.svg" alt="Rough Sapphire Crystal"
+                            class="gem-image w-full h-full object-cover transition-transform duration-700 ease-out">
+                        <div
+                            class="absolute top-4 right-4 bg-stone-900/80 backdrop-blur-sm px-3 py-1 text-blue-300 font-serif text-sm border border-blue-400/30 rounded-full">
+                            Sri Lanka • 8.4ct
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-serif text-white mb-2">Cornflower Sapphire</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">A velvety blue crystal with excellent clarity
+                            potential. Sourced from the legendary mines of Ratnapura.</p>
+                        <div class="flex justify-between items-center mt-6">
+                            <span class="text-xl font-bold text-blue-300">$1,850</span>
+                            <button
+                                class="bg-transparent border border-gray-600 text-gray-300 px-4 py-2 hover:border-blue-400 hover:text-blue-300 transition-colors uppercase text-xs tracking-wider">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Emerald -->
+                <div
+                    class="group gem-card relative bg-stone-800 rounded-lg overflow-hidden shadow-2xl border border-stone-700 transition-all duration-300 hover:border-emerald-500/50 hover:shadow-emerald-500/10">
+                    <div class="relative h-80 overflow-hidden bg-stone-950">
+                        <img src="./emerald.svg" alt="Rough Emerald Crystal"
+                            class="gem-image w-full h-full object-cover transition-transform duration-700 ease-out">
+                        <div
+                            class="absolute top-4 right-4 bg-stone-900/80 backdrop-blur-sm px-3 py-1 text-emerald-400 font-serif text-sm border border-emerald-400/30 rounded-full">
+                            Colombia • 3.1ct
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-serif text-white mb-2">Muzo Green Emerald</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Iconic vivid green hue characteristic of the
+                            Muzo mines. Complex jardin patterns create a mesmerizing internal landscape.</p>
+                        <div class="flex justify-between items-center mt-6">
+                            <span class="text-xl font-bold text-emerald-400">$3,200</span>
+                            <button
+                                class="bg-transparent border border-gray-600 text-gray-300 px-4 py-2 hover:border-emerald-400 hover:text-emerald-400 transition-colors uppercase text-xs tracking-wider">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="#"
+                    class="inline-block text-gray-400 hover:text-white border-b border-gray-600 hover:border-white pb-1 transition-colors">View
+                    All Specimens</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Parallax Feel -->
+    <section id="about" class="py-24 bg-stone-950 relative overflow-hidden">
+        <div class="absolute opacity-10 -right-20 top-20 w-96 h-96 bg-gold-500 rounded-full blur-3xl"></div>
+        <div class="absolute opacity-5 -left-20 bottom-20 w-80 h-80 bg-blue-500 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-gold-400 font-serif tracking-widest uppercase text-sm mb-2">Our Philosophy</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">From the Earth to Your
+                        Hands</h3>
+                    <div class="space-y-6 text-gray-300 text-lg font-light leading-relaxed">
+                        <p>
+                            We believe that the true beauty of a gemstone lies in its origin. Unlike cut stones that
+                            have been altered by man, rough gemstones carry the ancient history of their formation.
+                        </p>
+                        <p>
+                            Every specimen in our collection is hand-selected for its color, crystal structure, and
+                            unique character. We work directly with artisanal miners to ensure ethical practices and
+                            fair compensation.
+                        </p>
+                        <ul class="space-y-4 mt-8">
+                            <li class="flex items-center">
+                                <span class="h-px w-8 bg-gold-400 mr-4"></span>
+                                Ethical Sourcing
+                            </li>
+                            <li class="flex items-center">
+                                <span class="h-px w-8 bg-gold-400 mr-4"></span>
+                                Certificate of Authenticity
+                            </li>
+                            <li class="flex items-center">
+                                <span class="h-px w-8 bg-gold-400 mr-4"></span>
+                                Detailed Origin Reports
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div
+                        class="glass-panel p-2 rounded-lg transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <!-- Placeholder for an image of hands holding stones or mining -->
+                        <div class="bg-gray-800 h-96 w-full rounded flex items-center justify-center text-gray-600">
+                            <span class="font-serif italic text-2xl">Nature's Artistry</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 border-t border-stone-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="#" class="font-serif text-2xl text-gold-400 tracking-wider font-bold block mb-6">TERRA &
+                        STONE</a>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Providing collectors and jewelers with the finest rough gemstones the earth has to offer.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-serif mb-6">Shop</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Ruby</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Sapphire</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Emerald</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Diamond</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-serif mb-6">Company</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Sourcing</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-serif mb-6">Newsletter</h4>
+                    <p class="text-gray-500 text-sm mb-4">Subscribe for new specimen alerts.</p>
+                    <form class="flex flex-col space-y-2">
+                        <input type="email" placeholder="Email Address"
+                            class="bg-stone-800 border border-stone-700 text-white px-4 py-2 rounded focus:outline-none focus:border-gold-500 text-sm">
+                        <button
+                            class="bg-gold-600 text-stone-900 font-bold py-2 px-4 rounded hover:bg-gold-500 transition-colors text-sm">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div
+                class="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+                <p>&copy; 2024 Terra & Stone. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-gray-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-400">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
